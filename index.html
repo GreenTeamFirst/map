@@ -30,6 +30,19 @@
 		id: 'mapbox.streets'
 	}).addTo(mymap);
 
+    //  add a marker
+    var marker = L.marker([48.84655, 2.34443]).addTo(mymap);
+
+    // add popup for the markers
+    marker.bindPopup("<b>Projet de végétalisation</b><br>Quelqu'un a une idée pour cet endroit !"); //.openPopup for markers only
+
+    // add reaction to click on map
+    function onMapClick(e) {
+        L.marker(e).addTo(mymap);
+    }
+
+    mymap.on('click', onMapClick);
+
 </script>
 
 
