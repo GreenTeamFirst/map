@@ -38,7 +38,7 @@
 
     // add reaction to click on map
     function onMapClick(e) {
-        L.marker(e).addTo(mymap);
+        L.marker(e.latlng).addTo(mymap);
     }
 
     mymap.on('click', onMapClick);
