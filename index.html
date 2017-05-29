@@ -19,10 +19,11 @@
 <body>
 
 <div><h1>Ajoutez votre projet de végétalisation sur la map</h1></div>
+<div><p>(Cliquez sur le lieu de votre choix sur la carte)</p></div>
 
-<div id="mapid" style="width: 600px; height: 400px;"></div>
+<div id="map" style="height: 500px;"></div>
 <script>
-    var mymap = L.map('mapid').setView([51.505, -0.09], 13);
+    var map = L.map('map').setView([48.84091, 2.33674], 13);
     // token for but2ene on mapbox.com
 	L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiYnV0MmVuZSIsImEiOiJjajJpNGJybWkwMDAwMzJtaWQ1cDEwZHdrIn0.boDAj1T3kWJp6L5-RbsIQg', {
 		maxZoom: 18,
@@ -30,20 +31,23 @@
 			'<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
 			'Imagery © <a href="http://mapbox.com">Mapbox</a>',
 		id: 'mapbox.streets'
-	}).addTo(mymap);
+	}).addTo(map);
 
     //  add a marker
-    var marker = L.marker([48.84655, 2.34443]).addTo(mymap);
+    var marker = L.marker([48.84655, 2.34443]).addTo(map);
 
     // add popup for the markers
     marker.bindPopup("<b>Projet de végétalisation</b><br>Quelqu'un a une idée pour cet endroit !"); //.openPopup for markers only
 
     // add reaction to click on map
     function onMapClick(e) {
-        L.marker(e.latlng).addTo(mymap);
+        var marker = L.marker(e.latlng).addTo(map);
+        // add popup for the markers
+        marker.bindPopup("<b>Projet de végétalisation</b><br>Quelqu'un a une idée pour cet endroit !"); //.openPopup for markers only
+
     }
 
-    mymap.on('click', onMapClick);
+    map.on('click', onMapClick);
 
 </script>
 
